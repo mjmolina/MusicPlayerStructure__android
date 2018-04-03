@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_C"
+    android:background="@color/background">
+
+    <ImageView
+        android:id="@+id/grid_album_cover"
+        android:layout_width="@dimen/layoutwidth_height_C"
+        android:layout_height="@dimen/layoutwidth_height_C"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/layoutMarginBottomTop_C"
+        android:layout_marginLeft="@dimen/layoutMarginLeftRightStartEnd_C"
+        android:layout_marginRight="@dimen/layoutMarginLeftRightStartEnd_C"
+        android:layout_marginStart="@dimen/layoutMarginLeftRightStartEnd_C"
+        android:layout_marginEnd="@dimen/layoutMarginLeftRightStartEnd_C"
+        android:layout_marginTop="@dimen/layoutMarginBottomTop_C"
+        android:src="@drawable/aspencat_essencia">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/grid_album_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/grid_album_cover"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/TextView_layoutMarginBottomTop_C"
+        android:layout_marginTop="@dimen/TextView_layoutMarginBottomTop_C"
+        android:layout_marginLeft="@dimen/TextView_layoutMarginLeftRightStartEnd_C"
+        android:layout_marginRight="@dimen/TextView_layoutMarginLeftRightStartEnd_C"
+        android:layout_marginStart="@dimen/TextView_layoutMarginLeftRightStartEnd_C"
+        android:text="@+id/label"
+        android:textSize="@dimen/TextView_textSize_album_C">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/grid_album_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/grid_album_label"
+        android:layout_marginBottom="@dimen/TextView_layoutMarginBottomTop_C"
+        android:layout_marginTop="@dimen/TextView_layoutMarginBottomTop_C"
+        android:layout_marginLeft="@dimen/TextView_layoutMarginLeftRightStartEnd_C"
+        android:layout_marginRight="@dimen/TextView_layoutMarginLeftRightStartEnd_C"
+        android:layout_marginStart="@dimen/TextView_layoutMarginLeftRightStartEnd_C"
+        android:text="@+id/label"
+        android:textSize="@dimen/TextView_textSize_artist_C">
+
+    </TextView>
+
+
+</RelativeLayout>

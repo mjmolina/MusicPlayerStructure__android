@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/buttonArtists"
+            android:layout_width="@dimen/Buttonwidth_height_Artist_Start"
+            android:layout_height="@dimen/Buttonwidth_height_Artist_Start"
+            android:layout_marginBottom="@dimen/ButtonMarginBottom_Start"
+            android:layout_marginLeft="@dimen/ButtonMarginLeftStart_Start"
+            android:layout_marginStart="@dimen/ButtonMarginLeftStart_Start"
+            android:layout_marginTop="@dimen/ButtonMarginTop_Artist_Start"
+            android:background="@drawable/buttonartists"
+            android:text="@string/ButtonText_artists_Start"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/ButtonTextView_textSize_Start"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonSongs"
+            android:layout_width="@dimen/Buttonwidth_height_Songs_Start"
+            android:layout_height="@dimen/Buttonwidth_height_Songs_Start"
+            android:layout_marginBottom="@dimen/ButtonMarginBottom_Songs_Start"
+            android:layout_marginLeft="@dimen/ButtonMarginStartLeft_Songs_Start"
+            android:layout_marginStart="@dimen/ButtonMarginStartLeft_Songs_Start"
+            android:layout_marginTop="@dimen/ButtonMarginTop_Songs_Start"
+            android:background="@drawable/buttonsongs"
+            android:text="@string/ButtonText_Songs_Start"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/ButtonTextView_textSize_Start"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonAlbums"
+            android:layout_width="@dimen/Buttonwidth_height_Albums_Start"
+            android:layout_height="@dimen/Buttonwidth_height_Albums_Start"
+            android:layout_marginLeft="@dimen/ButtonMarginStartLeft_Albums_Start"
+            android:layout_marginStart="@dimen/ButtonMarginStartLeft_Albums_Start"
+            android:layout_marginTop="@dimen/ButtonMarginTop_Albums_Start"
+            android:background="@drawable/buttonmymusic"
+            android:text="@string/ButtonText_Start"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/ButtonTextView_textSize_Start"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ButtonMarginStartLeft_Exit_Start"
+            android:layout_marginStart="@dimen/ButtonMarginStartLeft_Exit_Start"
+            android:layout_marginTop="@dimen/ButtonMarginTop_Exit_Start"
+            android:background="@drawable/buttonexit"
+            android:text="@string/ButtonText_Exit" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

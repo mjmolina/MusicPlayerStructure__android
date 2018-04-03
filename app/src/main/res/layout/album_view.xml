@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/linearLayout_AW"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/albumCoverImage"
+                    android:layout_width="@dimen/layoutWidth_AW"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layoutMarginTop_AW"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/lurois_camidelfar" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/layoutWidth_AW"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/albumName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_marginLeftStart_AW"
+                        android:layout_marginStart="@dimen/layout_marginLeftStart_AW"
+                        android:layout_marginTop="@dimen/TextView_layoutMarginTop_AW"
+                        android:text="@string/album_name_AW"
+                        android:textSize="@dimen/TextView_TextSize_AW" />
+
+                    <TextView
+                        android:id="@+id/artistName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_marginLeftStart_AW"
+                        android:layout_marginStart="@dimen/layout_marginLeftStart_AW"
+                        android:text="@string/artist_name_AW"
+                        android:textSize="@dimen/TextView_TextSizeArtist_AW"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/songsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

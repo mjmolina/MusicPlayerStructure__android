@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/linearLayout_height_S"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/coverImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/albumSongName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/TextView_textSize_album_S" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/timerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/TextViewMarginStartLeft_S"
+                    android:layout_marginStart="@dimen/TextViewMarginStartLeft_S"
+                    android:text="@string/TextView_Timer_S" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/skipPreviousButton"
+                    android:layout_width="@dimen/ButtonWidth_S"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layoutMargin_S"
+                    android:layout_weight="1"
+                    android:background="@drawable/skipprevious"
+                    android:scaleType="centerInside" />
+
+                <Button
+                    android:id="@+id/stopButton"
+                    android:layout_width="@dimen/ButtonWidth_S"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layoutMargin_S"
+                    android:layout_weight="1"
+                    android:background="@drawable/stop"
+                    android:scaleType="centerInside" />
+
+                <Button
+                    android:id="@+id/playPauseButton"
+                    android:layout_width="@dimen/ButtonWidth_S"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layoutMargin_S"
+                    android:layout_weight="1"
+                    android:background="@drawable/play"
+                    android:scaleType="centerInside" />
+
+                <Button
+                    android:id="@+id/skipNextButton"
+                    android:layout_width="@dimen/ButtonWidth_S"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layoutMargin_S"
+                    android:layout_weight="1"
+                    android:background="@drawable/skipnext"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
