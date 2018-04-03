@@ -45,4 +45,6 @@
     <dimen name="ButtonWidth_height_Songs_StartLand">140dp</dimen>
     <dimen name="ButtonMarginLeftStart_Exit_StartLand">450dp</dimen>
     <dimen name="ButtonMarginTop_Exit_StartLand">200dp</dimen>
+    <dimen name="ButtonMarginLeftStart_Albums_StartLand">33dp</dimen>
+    <dimen name="ButtonMarginBottom_Albums_StartLand">16dp</dimen>
 </resources>
