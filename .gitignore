@@ -39,9 +39,10 @@ Thumbs.db
 build/
 .navigation
 captures/
-output.json 
+output.json
 
 #NDK
 obj/
 .externalNativeBuild
 
+*.un~

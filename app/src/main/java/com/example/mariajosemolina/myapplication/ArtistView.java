@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.AdapterView;
@@ -22,11 +23,9 @@ public class ArtistView extends AppCompatActivity {
 
     GridView gridView;
     LinearLayout linearLayout;
+    ImageButton menuHome, menuArtist, menuAlbum, menuSong;
 
-    ArrayList<String> albumNames = new ArrayList<>();
-    ArrayList<String> coverNames = new ArrayList<>();
-    String artistName;
-    ArrayList<ArrayList<String>> albums = new ArrayList<>();
+    ArrayList<Album> albums = new ArrayList<>();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -49,21 +48,23 @@ public class ArtistView extends AppCompatActivity {
 
         gridView = (GridView) findViewById(R.id.gridView);
         linearLayout = (LinearLayout) findViewById(R.id.songsListLayout);
+        menuHome = (ImageButton) findViewById(R.id.menuHome);
+        menuArtist = (ImageButton) findViewById(R.id.menuArtist);
+        menuAlbum = (ImageButton) findViewById(R.id.menuAlbum);
+        menuSong = (ImageButton) findViewById(R.id.menuSong);
 
         Bundle params = getIntent().getExtras();
         String artistName = params.getString("artistName");
 
         for (int i = 0; i < Start.db.size(); i++) {
-            ArrayList<String> album = Start.db.get(i);
-            if (artistName.equals(album.get(1))) {
+            Album album = Start.db.get(i);
+            if (artistName.equals(album.artistName)) {
                 albums.add(album);
-                albumNames.add(album.get(2));
-                coverNames.add(album.get(3));
             }
         }
 
         final AlbumCoverAdapter adapter = new AlbumCoverAdapter(this,
-                android.R.layout.simple_gallery_item, albumNames, coverNames, artistName);
+                android.R.layout.simple_gallery_item, albums);
 
         gridView.setAdapter(adapter);
 
@@ -82,23 +83,65 @@ public class ArtistView extends AppCompatActivity {
         item.setTextSize(20);
         linearLayout.addView(item);
 
+        menuHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ArtistView.this, Start.class);
+                startActivity(intent);
+            }
+        });
+        menuArtist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ArtistView.this, ContentList.class);
+                intent.putExtra("isArtist", true);
+                intent.putExtra("isSong", false);
+                intent.putExtra("isAlbum", false);
+                startActivity(intent);
+            }
+        });
+        menuAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ArtistView.this, ContentList.class);
+                intent.putExtra("isArtist", false);
+                intent.putExtra("isSong", false);
+                intent.putExtra("isAlbum", true);
+                startActivity(intent);
+            }
+        });
+        menuSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ArtistView.this, ContentList.class);
+                intent.putExtra("isArtist", false);
+                intent.putExtra("isSong", true);
+                intent.putExtra("isAlbum", false);
+                startActivity(intent);
+            }
+        });
+
     }
 
-    private void displayAlbumSongs(ArrayList<ArrayList<String>> albums, String clickedAlbum) {
+    private void displayAlbumSongs(ArrayList<Album> albums, String clickedAlbum) {
         for (int i = 0; i < albums.size();i++) {
-            ArrayList<String> album = albums.get(i);
+            Album album = albums.get(i);
 
-            if (clickedAlbum.equals(album.get(2))) {
+            if (clickedAlbum.equals(album.albumName)) {
                 linearLayout.removeAllViews();
-                for (int j = 4; j < album.size(); j++) {
-                    final int albumId = Integer.parseInt(album.get(0));
+                for (int j = 0; j < album.songList.size(); j++) {
+                    final int albumId = album.id;
 
                     final TextView item = new TextView(ArtistView.this);
                     LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT);
                     llp.setMargins(50, 40, 0, 40);
-                    final String songName = album.get(j);
-                    item.setText((j-3)+". "+songName);
+                    final String songName = album.songList.get(j);
+                    item.setText((j+1)+". "+songName);
                     item.setId(i);
                     item.setTextSize(20);
                     item.setClickable(true);

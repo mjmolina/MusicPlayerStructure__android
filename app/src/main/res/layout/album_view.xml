@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@id/menu">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,6 +27,7 @@
                     android:layout_width="@dimen/layoutWidth_AW"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/layoutMarginTop_AW"
+                    android:layout_marginBottom="@dimen/layoutMarginTop_AW"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/lurois_camidelfar" />
 
@@ -57,6 +60,10 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/HorizontalLineHeight"
+                android:background="@color/HorizontalLineColor"/>
 
             <LinearLayout
                 android:id="@+id/songsLayout"
@@ -68,5 +75,47 @@
 
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/MenuHeight"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_alignParentBottom="true">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/menuHome"
+            android:layout_width="@dimen/Zero"
+            android:layout_height="@dimen/MenuHeight"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home_icon" />
+
+        <ImageButton
+            android:id="@+id/menuArtist"
+            android:layout_width="@dimen/Zero"
+            android:layout_height="@dimen/MenuHeight"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/artists_icon" />
+
+        <ImageButton
+            android:id="@+id/menuAlbum"
+            android:layout_width="@dimen/Zero"
+            android:layout_height="@dimen/MenuHeight"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/albums_icon" />
+
+        <ImageButton
+            android:id="@+id/menuSong"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/MenuHeight"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/songs_icon" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

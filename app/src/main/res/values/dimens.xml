@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="HorizontalLineHeight">5dp</dimen>
+    <dimen name="MenuHeight">48dp</dimen>
+    <dimen name="Zero">0dp</dimen>
     <dimen name="linearLayout_AW">200dp</dimen>
     <dimen name="layoutMarginTop">30dp</dimen>
     <dimen name="layoutMarginTop_AW">30dp</dimen>

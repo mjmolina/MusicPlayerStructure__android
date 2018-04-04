@@ -10,18 +10,14 @@ import android.widget.TextView;
 import android.widget.ImageView;
 
 
-public class AlbumCoverAdapter extends ArrayAdapter<String>  {
+public class AlbumCoverAdapter extends ArrayAdapter<Album>  {
     private Context context;
-    ArrayList<String> albumNames;
-    ArrayList<String> coverNames;
-    String artist;
+    ArrayList<Album> albums;
 
-    public AlbumCoverAdapter(Context context, int textViewResourceId, ArrayList<String> albumNames, ArrayList<String> coverNames, String artist) {
-        super(context, textViewResourceId, albumNames);
+    public AlbumCoverAdapter(Context context, int textViewResourceId, ArrayList<Album> albums) {
+        super(context, textViewResourceId, albums);
         this.context = context;
-        this.albumNames = albumNames;
-        this.coverNames = coverNames;
-        this.artist = artist;
+        this.albums = albums;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -37,15 +33,15 @@ public class AlbumCoverAdapter extends ArrayAdapter<String>  {
 
             // set value into textview
             TextView albumName = (TextView) gridView.findViewById(R.id.grid_album_label);
-            albumName.setText(albumNames.get(position));
+            albumName.setText(albums.get(position).albumName);
             TextView artistName = (TextView) gridView.findViewById(R.id.grid_album_artist);
-            artistName.setText(artist);
+            artistName.setText(albums.get(position).artistName);
 
             // set image based on selected text
             ImageView imageView = (ImageView) gridView.findViewById(R.id.grid_album_cover);
 
 
-            String cover_path = coverNames.get(position);
+            String cover_path = albums.get(position).albumCover;
             imageView.setImageResource(context.getResources().getIdentifier("drawable/" + cover_path, null, context.getPackageName()));
 
         } else {
@@ -57,7 +53,7 @@ public class AlbumCoverAdapter extends ArrayAdapter<String>  {
 
     @Override
     public int getCount() {
-        return albumNames.size();
+        return albums.size();
     }
 
     @Override

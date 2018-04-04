@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.app.ActionBar;
@@ -18,9 +19,8 @@ import java.util.Collections;
 public class ContentList extends AppCompatActivity{
 
     LinearLayout line1;
-    Boolean isArtist;
-    Boolean isSong;
-    Boolean isAlbum;
+    Boolean isArtist, isSong, isAlbum;
+    ImageButton menuHome, menuArtist, menuAlbum, menuSong;
 
     // Remove the duplicate elements of an ArrayList<String> and sort
     // them in alphabetical order
@@ -181,6 +181,10 @@ public class ContentList extends AppCompatActivity{
         setContentView(R.layout.content_activity);
 
         line1 = (LinearLayout) findViewById(R.id.line1);
+        menuHome = (ImageButton) findViewById(R.id.menuHome);
+        menuArtist = (ImageButton) findViewById(R.id.menuArtist);
+        menuAlbum = (ImageButton) findViewById(R.id.menuAlbum);
+        menuSong = (ImageButton) findViewById(R.id.menuSong);
 
         if (savedInstanceState != null) {
             isArtist = savedInstanceState.getBoolean("isArtist");
@@ -196,42 +200,89 @@ public class ContentList extends AppCompatActivity{
         if (isArtist) {
             showArtists();
         } else if (isSong) {
-                    showSongs();
-                } else if (isAlbum) {
-                    showAlbums();
-                }
-    }
-            // Get a cover of all the artists from our data base
-            private ArrayList<String> getArtists () {
-                ArrayList<String> artists = new ArrayList<String>();
-                for (int i = 0; i < Start.db.size(); i++) {
-                    artists.add(Start.db.get(i).get(1));
-                }
-                return artists;
-            }
-            // Get a cover of all the songs from our data base
-            private ArrayList<String> getSongs () {
-                ArrayList<String> songs = new ArrayList<String>();
-                for (int i = 0; i < Start.db.size(); i++) {
-                    ArrayList<String> album = Start.db.get(i);
-                    String id = album.get(0);
-
-                    // The first four elements are ID, Artist, Album and Cover
-                    for (int j = 4; j < album.size(); j++) {
-                        // Here we use a way to store the ID of the album inside the name
-                        // of the song, so we can filter easily
-                        String song = album.get(j);
-                        songs.add(id + "_" + song);
-                    }
-                }
-                return songs;
-            }
-                // Get a cover of all the albums from our data base
-                private ArrayList<String> getAlbums() {
-                    ArrayList<String> albums = new ArrayList<String>();
-                    for (int i = 0; i < Start.db.size(); i++) {
-                        albums.add(Start.db.get(i).get(2));
-                    }
-                    return albums;
-                }
+            showSongs();
+        } else if (isAlbum) {
+            showAlbums();
         }
+
+        menuHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ContentList.this, Start.class);
+                startActivity(intent);
+            }
+        });
+        menuArtist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ContentList.this, ContentList.class);
+                intent.putExtra("isArtist", true);
+                intent.putExtra("isSong", false);
+                intent.putExtra("isAlbum", false);
+                startActivity(intent);
+            }
+        });
+        menuAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ContentList.this, ContentList.class);
+                intent.putExtra("isArtist", false);
+                intent.putExtra("isSong", false);
+                intent.putExtra("isAlbum", true);
+                startActivity(intent);
+            }
+        });
+        menuSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(ContentList.this, ContentList.class);
+                intent.putExtra("isArtist", false);
+                intent.putExtra("isSong", true);
+                intent.putExtra("isAlbum", false);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+    // Get a cover of all the artists from our data base
+    private ArrayList<String> getArtists () {
+        ArrayList<String> artists = new ArrayList<String>();
+        for (int i = 0; i < Start.db.size(); i++) {
+            artists.add(Start.db.get(i).artistName);
+        }
+        return artists;
+    }
+
+    // Get a cover of all the songs from our data base
+    private ArrayList<String> getSongs () {
+        ArrayList<String> songs = new ArrayList<String>();
+        for (int i = 0; i < Start.db.size(); i++) {
+            Album album = Start.db.get(i);
+            int id = album.id;
+
+            for (int j = 0; j < album.songList.size(); j++) {
+                // Here we use a way to store the ID of the album inside the name
+                // of the song, so we can filter easily
+                String song = album.songList.get(j);
+                songs.add(id + "_" + song);
+            }
+        }
+        return songs;
+    }
+
+    // Get a cover of all the albums from our data base
+    private ArrayList<String> getAlbums() {
+        ArrayList<String> albums = new ArrayList<String>();
+        for (int i = 0; i < Start.db.size(); i++) {
+            albums.add(Start.db.get(i).albumName);
+        }
+        return albums;
+    }
+
+}

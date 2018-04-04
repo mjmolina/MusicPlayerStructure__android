@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#247ba0 </color>
     <color name="colorAccent">#FF4081</color>
     <color name="background">#aecbc9</color>
+    <color name="HorizontalLineColor">#515151</color>
 </resources>

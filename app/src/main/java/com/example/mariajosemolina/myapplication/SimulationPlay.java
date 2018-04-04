@@ -1,9 +1,11 @@
 package com.example.mariajosemolina.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Button;
@@ -19,6 +21,7 @@ public class SimulationPlay extends AppCompatActivity {
     SeekBar seekBar;
     TextView timerText, albumSongName;
     ImageView coverImageView;
+    ImageButton menuHome, menuArtist, menuAlbum, menuSong;
 
     // For the fake play timer
     boolean isPaused = true;
@@ -88,6 +91,10 @@ public class SimulationPlay extends AppCompatActivity {
         timerText = (TextView) findViewById(R.id.timerText);
         albumSongName = (TextView) findViewById(R.id.albumSongName);
         coverImageView = (ImageView) findViewById(R.id.coverImageView);
+        menuHome = (ImageButton) findViewById(R.id.menuHome);
+        menuArtist = (ImageButton) findViewById(R.id.menuArtist);
+        menuAlbum = (ImageButton) findViewById(R.id.menuAlbum);
+        menuSong = (ImageButton) findViewById(R.id.menuSong);
 
         // Starting the timer objects and variables
         seekBar.setMax(100);
@@ -138,16 +145,58 @@ public class SimulationPlay extends AppCompatActivity {
         });
 
         Context context = getApplicationContext();
-        String imageName = Start.db.get(idAlbum-1).get(3);
-        String albumName = Start.db.get(idAlbum-1).get(1);
+        String albumCover = Start.db.get(idAlbum-1).albumCover;
+        String artistName = Start.db.get(idAlbum-1).artistName;
 
 
 
-        int id = context.getResources().getIdentifier("drawable/"+imageName,
+        int id = context.getResources().getIdentifier("drawable/"+albumCover,
                 null, context.getPackageName());
         coverImageView.setImageResource(id);
 
-        albumSongName.setText(albumName+" - "+songName);
+        albumSongName.setText(artistName+" - "+songName);
+
+        menuHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(SimulationPlay.this, Start.class);
+                startActivity(intent);
+            }
+        });
+        menuArtist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(SimulationPlay.this, ContentList.class);
+                intent.putExtra("isArtist", true);
+                intent.putExtra("isSong", false);
+                intent.putExtra("isAlbum", false);
+                startActivity(intent);
+            }
+        });
+        menuAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(SimulationPlay.this, ContentList.class);
+                intent.putExtra("isArtist", false);
+                intent.putExtra("isSong", false);
+                intent.putExtra("isAlbum", true);
+                startActivity(intent);
+            }
+        });
+        menuSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(SimulationPlay.this, ContentList.class);
+                intent.putExtra("isArtist", false);
+                intent.putExtra("isSong", true);
+                intent.putExtra("isAlbum", false);
+                startActivity(intent);
+            }
+        });
     }
 
     // General method to stop the timer
