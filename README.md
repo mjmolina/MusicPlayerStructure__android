@@ -20,18 +20,18 @@ for different functionalities:
  * Artists: It will display all the artists of all the songs.
  * Albums: It will show the list of all the albums that are available.
 
- * The Songs activity it only a list of TextView elements that
+ * The **Songs** activity it only a list of TextView elements that
  contains the information related to the song. Each item is clickable
  and will open a new activity, the Player with the basic options
  that one can expect.
 
- * The Artists activity will display as a list all the artists,
+ * The **Artists** activity will display as a list all the artists,
  and also the items are clickable. With the selected artist, a new
  activity will appear that  include images of all the albums on
  the upper half of the screen, and at the bottom a list of the selected
  album.
 
-  The **Albums activity will list the albums and following the same
+ * The **Albums** activity will list the albums and following the same
  idea, the selected item will open a new activity that will contain
  the information of the album on the top, and the songs at the bottom
  of the screen.
@@ -43,18 +43,23 @@ In total the application has 5 activities/views:
 4. The album view
 5. The player (which is like a "song view")
 
+All the views, but the cover, have a menu with buttons to
+go directly to the views: Home, Artists, Albums and Songs.
+
 ### Specification
 
-* The information of all the music is saved in a ArrayList<ArrayList<String»,
-this is because I store the information of the whole album (ArrayList<String>)
-with the following structure:
+* Each album consist of an object of the custom class **Album** that has:
+ * Album ID (int)
+ * Artist name (String)
+ * Album name (String)
+ * Album cover (String)
+ * Song list (ArrayList<String>)
 
-ID, Artist name, Album name, Album cover, Song 1, Song 2, ... Song N
+* The information of all the music is saved in a ArrayList<Album>,
+this is because I store the information of the whole album in an instance
+of the class Album.
 
-Then each of this albums is going to another list, that is why
-I have a double ArrayList of Strings.
-
-I called this structure db because in the future I hope to be able
+I called this structure **db** because in the future I hope to be able
 to update the app to use a real database.
 
 * Most of the items that I show on the screen are generated from
@@ -85,8 +90,11 @@ but now, since I had many levels in the activity stack, I found
 how to be able to "finish" the current activity, so the previous
 one that was displayed will be shown.
 
+* Starting activities from each view is not too complicated, and
+I do it finishing the current activity and explicitly starting the
+new desire activity.
+
 * Variables in classes: I did not know that I could access the
 database from different java classes, but since the variable is
 public, all the java files in my package could access the information
 of this variable.
-
